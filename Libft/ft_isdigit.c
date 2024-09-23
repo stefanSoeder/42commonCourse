@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:09:38 by stemarti          #+#    #+#             */
-/*   Updated: 2024/09/18 16:17:56 by stemarti         ###   ########.fr       */
+/*   Created: 2024/09/18 16:16:03 by stemarti          #+#    #+#             */
+/*   Updated: 2024/09/18 16:52:15 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-int	ft_isalpha(int c)
+int	ft_isdigit(int c)
 {
-	if (!((c >= 65 && c <= 90) || (c >= 97 && c <= 122)))
+	if (!(c >= '0' && c <= '9'))
 		return (0);
 	else
 		return (1);
@@ -23,10 +24,10 @@ int	ft_isalpha(int c)
 {
     if (argc == 2)
     {
-        if (ft_isalpha(argv[1][0]))
-            write(1, "Alphabetic\n", 11);
+        if (ft_isdigit(argv[1][0]))
+            write(1, "Digit\n", 6);
         else
-            write(1, "Non-alphabetic\n", 15);
+            write(1, "Non-digit\n", 10);
     }
     else
         write(1, "NULL\n", 5);
