@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 13:05:36 by stemarti          #+#    #+#             */
-/*   Updated: 2024/09/24 12:40:59 by stemarti         ###   ########.fr       */
+/*   Created: 2024/09/24 11:28:23 by stemarti          #+#    #+#             */
+/*   Updated: 2024/09/24 12:30:35 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
-
-int	ft_isalnum(int c)
+int	ft_isascii(int c)
 {
-	if ((ft_isalpha(c)) || (ft_isdigit(c)))
+	if (c >= 0 && c <= 127)
 		return (1);
 	else
 		return (0);
