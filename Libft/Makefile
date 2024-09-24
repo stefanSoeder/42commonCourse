@@ -12,6 +12,7 @@ SRC = ft_isalpha.c \
 		ft_isascii.c \
 		ft_isprint.c \
 		ft_strlen.c \
+		ft_memset.c \
 
 # Object files (.o)
 OBJ = $(SRC:.c=.o)

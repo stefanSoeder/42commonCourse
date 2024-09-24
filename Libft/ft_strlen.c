@@ -6,11 +6,13 @@
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:01:53 by stemarti          #+#    #+#             */
-/*   Updated: 2024/09/24 13:08:33 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:50:59 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
