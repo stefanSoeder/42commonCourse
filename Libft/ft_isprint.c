@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 14:59:31 by stemarti          #+#    #+#             */
-/*   Updated: 2024/09/24 12:49:56 by stemarti         ###   ########.fr       */
+/*   Created: 2024/09/24 12:44:11 by stemarti          #+#    #+#             */
+/*   Updated: 2024/09/24 13:00:29 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-
-# include <unistd.h>
-
-int	ft_isalpha(int c);
-int	ft_isdigit(int c);
-int	ft_isalnum(int c);
-int	ft_isascii(int c);
-int	ft_isprint(int c);
-#endif
+int	ft_isprint(int c)
+{
+	if ((c > 31) && (c < 127))
+		return (1);
+	else
+		return (0);
+}
