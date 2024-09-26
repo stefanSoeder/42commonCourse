@@ -6,7 +6,7 @@
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:59:31 by stemarti          #+#    #+#             */
-/*   Updated: 2024/09/26 18:15:06 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:37:15 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 //size_t				ft_strlcat(char *dst, const char *src, size_t size);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+char				*ft_strchr(const char *s, int c);
 
 #endif
