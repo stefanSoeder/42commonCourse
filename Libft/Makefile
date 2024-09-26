@@ -17,8 +17,7 @@ SRC = ft_isalpha.c \
 		ft_memcpy.c \
 		ft_memmove.c \
 		ft_strlcpy.c \
-		ft_strlcat.c \
-
+		ft_toupper.c \
 # Object files (.o)
 OBJ = $(SRC:.c=.o)
 
