@@ -6,7 +6,7 @@
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:31:55 by stemarti          #+#    #+#             */
-/*   Updated: 2024/09/26 19:06:48 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:36:59 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strchr(const char *s, int c)
 			return (&((char *)s)[i]);
 		i++;
 	}
-	if (c == '\0')
+	if ((char)c == s[i])
 		return (&((char *)s)[i]);
 	return (0);
 }
