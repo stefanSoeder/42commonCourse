@@ -23,6 +23,7 @@ SRC = ft_isalpha.c \
 		ft_strchr.c \
 		ft_strrchr.c \
 		ft_strncmp.c \
+		ft_memchr.c \
 
 # Object files (.o)
 OBJ = $(SRC:.c=.o)

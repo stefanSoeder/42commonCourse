@@ -6,7 +6,7 @@
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:59:31 by stemarti          #+#    #+#             */
-/*   Updated: 2024/09/27 12:27:01 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:05:06 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,6 @@ int					ft_tolower(int c);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+void				*ft_memchr(const void *s, int c, size_t n);
+
 #endif
