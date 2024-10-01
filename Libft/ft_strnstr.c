@@ -6,7 +6,7 @@
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:50:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/09/30 19:00:36 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:06:35 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@ char	*ft_strnstr(const char *big, const char *small, size_t len)
 	if ((ft_strlen(small)) == 0)
 		return ((char *)big);
 	if (len <= 0)
-		return (0);
+		return (NULL);
 	while ((big[i] != '\0') && (i < len))
 	{
-		while ((big[i] == small[j]) && (i < len))
+		while ((big[i + j] == small[j]) && ((i + j) < len))
 		{
-			i++;
 			j++;
 			if (small[j] == '\0')
-				return (&((char *)big)[i - j]);
+				return (&((char *)big)[i]);
 		}
 		j = 0;
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
