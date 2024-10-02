@@ -6,7 +6,7 @@
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:59:31 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/02 17:37:19 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/02 18:15:37 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,6 @@ char				*ft_strnstr(const char *big, const char *small, size_t len);
 int					ft_atoi(const char *nptr);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(const char *s);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+		
 #endif
