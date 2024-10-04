@@ -6,7 +6,7 @@
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:55:12 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/02 19:08:02 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:02:24 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	sub = (char *)malloc(len + 1);
+	if (((size_t)ft_strlen(s)) < (((size_t)start + len)))
+	{
+		sub = (char *)malloc(1);
+		return (ft_strdup(""));
+	}
 	if (!sub)
 		return (NULL);
 	while (s[i])
