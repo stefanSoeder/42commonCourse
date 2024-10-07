@@ -30,6 +30,7 @@ SRC = ft_isalpha.c \
 		ft_calloc.c \
 		ft_strdup.c \
 		ft_substr.c \
+		ft_strjoin.c  \
 
 # Object files (.o)
 OBJ = $(SRC:.c=.o)
