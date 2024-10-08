@@ -6,29 +6,38 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:29 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/08 17:29:38 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/08 20:42:01 by soeder85         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	word_counter(char const *s, char c);
+static int 	word_len (const char *s,char start, char c);
 
 char	**ft_split(char const *s, char c)
 {
-	char	*array_of_arrays;
+	char	*arrays_array;
 	
-	array_of_arrays = ft_calloc ((word_counter(s, c) + 1), 1);
+	arrays_array = ft_calloc ((word_counter(s, c) + 1), 1);
 	int 	i;
 	int	j;
 	int	k;
+	char	*new_word;
 
 	i = 0;
-	j = 1;
+	j = 0;
 	k = 0;
 
-	while (s)
+	while (s != '\0') 
 	{
+		if (s[i] != c)
+		{
+			j = word_len (s, i, c)
+			new_word = ft_substring(s, i, j);
+			i + j;
+			j = 0;
+		}
 		if ((s[i] == c) && (s[i + 1] != '\0'))
 		{	
 			char	*new_word;
@@ -37,13 +46,13 @@ char	**ft_split(char const *s, char c)
 				j++;
 			new_word = ft_substring(s, (ft_strlen(s)-(i + 1)), j);
 			j = 1;
-			if (array_of_arrays[k] == 0)
-				array_of_arrays[k] = new_word;
+			if (arrays_array[k] == 0)
+				arrays_array[k] = new_word;
 			k++;
 		}
 		i++;
 	}
-	return (array_of_arrays);
+	return (arrays_array);
 }
 
 static int	word_counter(char const *s, char c)
@@ -62,4 +71,13 @@ static int	word_counter(char const *s, char c)
 	return (words);
 }
 
+static int 	word_len (const char *s,char start, char c)
+{
+	int	len;
 
+	len = 0;
+	while ((s[start] != c) || (s[start] != '\0'))
+		len++;
+	start++;
+	return (len);
+}
