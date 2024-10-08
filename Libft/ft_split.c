@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:29 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/08 17:10:10 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:29:38 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	*array_of_arrays;
 	
-	array_of_arrays = ft_calloc (words, 1);
+	array_of_arrays = ft_calloc ((word_counter(s, c) + 1), 1);
 	int 	i;
 	int	j;
 	int	k;
@@ -36,7 +36,7 @@ char	**ft_split(char const *s, char c)
 			while ((s[i + j] != c) || (s[i + j] != '\0')
 				j++;
 			new_word = ft_substring(s, (ft_strlen(s)-(i + 1)), j);
-			j = 0;
+			j = 1;
 			if (array_of_arrays[k] == 0)
 				array_of_arrays[k] = new_word;
 			k++;
