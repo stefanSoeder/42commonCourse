@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:07:55 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/07 18:44:07 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:23:28 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	while (j > i && is_set (set, s1[j]))
 		j--;
-	return (ft_substr(s1, i, (j - i + +1)));
+	return (ft_substr(s1, i, (j - i +1)));
 }
 
 static int	is_set(const char *set, char c)
