@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:29 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/11 16:52:30 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:38:16 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,4 @@ static int 	word_len (const char *s, int start, char c)
 	}
 	return (len);
 }
+

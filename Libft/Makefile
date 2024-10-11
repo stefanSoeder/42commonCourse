@@ -1,6 +1,6 @@
 
 # Compiling flags
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror 
 
 # Built program name
 NAME = libft.a
