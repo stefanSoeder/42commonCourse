@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:29 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/08 20:54:26 by soeder85         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:52:30 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	**arrays_array;
 	
-	arrays_array = ft_calloc ((word_counter(s, c) + 1), 1);
+	arrays_array = ft_calloc ((word_counter(s, c) + 1), sizeof(char *));
 	int 	i;
 	int	j;
 	int	k;
@@ -29,6 +29,8 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	k = 0;
 
+	if (!s)
+		return (NULL);
 	while (s[i] != '\0') 
 	{
 		if (s[i] != c)
@@ -37,8 +39,7 @@ char	**ft_split(char const *s, char c)
 			new_word = ft_substr(s, i, j);
 			i += j;
 			j = 0;
-			if (arrays_array[k] == 0)
-				arrays_array[k] = new_word;
+			arrays_array[k] = new_word;
 			k++;
 		}
 		i++;
@@ -53,9 +54,9 @@ static int	word_counter(char const *s, char c)
 
 	i = 0;
 	words = 0;
-	while (s)
+	while (s[i] != '\0')
 	{
-		if (((s[i] == (char) c)) && s[i + 1] != '\0')
+		if (((s[i] !=  c)) && ((i == 0) || (s[i - 1] == (char)c)))
 			words++;
 		i++;
 	}
@@ -67,8 +68,10 @@ static int 	word_len (const char *s, int start, char c)
 	int	len;
 
 	len = 0;
-	while ((s[start] != c) || (s[start] != '\0'))
+	while ((s[start] != c) && (s[start] != '\0'))
+	{
 		len++;
-	start++;
+		start++;
+	}
 	return (len);
 }
