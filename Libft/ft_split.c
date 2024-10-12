@@ -6,14 +6,14 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:29 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/12 12:55:16 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/12 15:10:28 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	word_counter(char const *s, char c);
-static int 	word_len (const char *s,int start, char c);
+static int	ft_word_counter(char const *s, char c);
+static int 	ft_word_len (const char *s,int start, char c);
 static void 	ft_free(char **arrays_array);
 
 char	**ft_split(char const *s, char c)
@@ -27,19 +27,19 @@ char	**ft_split(char const *s, char c)
 	k = 0;
 	if (!s)
 		return (NULL);
-	arrays_array = ft_calloc ((word_counter(s, c) + 1), sizeof(char *));
+	arrays_array = ft_calloc ((ft_word_counter(s, c) + 1), sizeof(char *));
 	if (!arrays_array)
 		return (NULL);
 	while (s[i] != '\0') 
 	{
 		if (s[i] != c)
 		{
-			new_word = ft_substr(s, i, word_len(s, i, c));
+			new_word = ft_substr(s, i, ft_word_len(s, i, c));
 			if (!new_word)
 				ft_free(arrays_array);
 			arrays_array[k] = new_word;
 			k++;
-			i += word_len(s, i , c);
+			i += ft_word_len(s, i , c);
 		}
 		else
 			i++;
@@ -47,7 +47,7 @@ char	**ft_split(char const *s, char c)
 	return (arrays_array);
 }
 
-static int	word_counter(char const *s, char c)
+static int	ft_word_counter(char const *s, char c)
 {
 	int	i;
 	int	words;
@@ -63,7 +63,7 @@ static int	word_counter(char const *s, char c)
 	return (words);
 }
 
-static int 	word_len (const char *s, int start, char c)
+static int 	ft_word_len (const char *s, int start, char c)
 {
 	int	len;
 
