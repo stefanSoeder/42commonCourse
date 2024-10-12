@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:29 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/12 15:10:28 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/12 15:20:45 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,3 +91,5 @@ static void 	ft_free(char **arrays_array)
 	}
 	free(arrays_array);
 }
+
+static void	ft_array_creator(char const *original, char const **new_array, char c)
