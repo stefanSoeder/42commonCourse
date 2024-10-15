@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:29 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/12 19:22:06 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/15 09:21:28 by soeder85         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	ft_free(char **arrays_array)
 
 	k = 0;
 	if (!arrays_array)
-		k = 0;
+		return ;
 	while (arrays_array[k])
 	{
 		free(arrays_array[k]);
