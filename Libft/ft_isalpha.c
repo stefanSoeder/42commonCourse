@@ -6,10 +6,11 @@
 /*   By: stemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:09:38 by stemarti          #+#    #+#             */
-/*   Updated: 2024/09/24 12:29:16 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:14:21 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+
+#include "libft.h" 
 
 int	ft_isalpha(int c)
 {
