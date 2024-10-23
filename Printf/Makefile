@@ -3,7 +3,7 @@
 FLAG = -Wall -Wextra -Werror 
 
 # Built program name
-NAME = ft_printf.a
+NAME = libftrintf.a
 
 # Source files (.c)
 SRC = ft_putchar.c ft_puts.c ft_puptr.c ft_printf.c\
