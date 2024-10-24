@@ -6,13 +6,13 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:38:54 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/23 15:41:42 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:57:18 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puchar(const char c)
+int	ft_putchar(const char c)
 {
 	write(1, &c, 1);
 	return (1);

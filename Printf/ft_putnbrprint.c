@@ -6,13 +6,13 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:41:37 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/23 16:50:13 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:03:24 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbrprint(int n)
+int	ft_putnbrprint(int n)
 {
 	long	num;
 	int		len;

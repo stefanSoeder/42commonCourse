@@ -6,7 +6,7 @@ FLAG = -Wall -Wextra -Werror
 NAME = libftrintf.a
 
 # Source files (.c)
-SRC = ft_putchar.c ft_puts.c ft_puptr.c ft_printf.c ft_putnbrprint.c ft_putunsignnbr.c ft_puthex.c \
+SRC = ft_putchar.c ft_puts.c ft_putptr.c ft_printf.c ft_putnbrprint.c ft_putunsignnbr.c ft_puthex.c \
 		
 
 # Object files (.o)

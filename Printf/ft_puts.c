@@ -6,13 +6,13 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:42:15 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/23 16:13:43 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:02:54 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puts(char *str)
+int	ft_puts(char *str)
 {
 	int	i;
 
