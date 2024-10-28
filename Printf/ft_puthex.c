@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:46:30 by stemarti          #+#    #+#             */
-/*   Updated: 2024/10/24 11:31:37 by soeder85         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:51:25 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	ft_puthex(unsigned long long num, int cap)
 	return (len);
 }
 
-int	main(void)
-{
+/*{
 	ft_puthex(12345678913135, 0);
-}
+}*/
