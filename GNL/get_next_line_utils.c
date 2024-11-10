@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:21:51 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/10 18:34:31 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:49:26 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strchrchar(char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
