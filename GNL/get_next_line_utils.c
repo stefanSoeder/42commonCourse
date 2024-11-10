@@ -6,11 +6,11 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:21:51 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/10 18:07:14 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:34:31 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_nect_line.h"
+#include "get_next_line.h"
 
 char	*ft_free(char **str)
 {

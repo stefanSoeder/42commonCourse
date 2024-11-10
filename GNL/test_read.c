@@ -6,14 +6,11 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 11:28:28 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/10 17:20:55 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:35:52 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
-
+#include "get_next_line.h"
 
 char *get_next_line(int fd)
 {
@@ -30,6 +27,7 @@ char *get_next_line(int fd)
 	read_bytes= read(fd, buffer, 50);
 	int	i;
 	i = 0;
+	if (f)
 	while(buffer[i] != '\0')
 	{
 		if(buffer[i] != '\n')
