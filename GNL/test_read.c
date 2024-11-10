@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 11:28:28 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/10 18:35:52 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:38:04 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ char *get_next_line(int fd)
 	read_bytes= read(fd, buffer, 50);
 	int	i;
 	i = 0;
-	if (f)
+	char	*excerpt;
+	if (ft_strchr(buffer, '\n') == 0)
+	{	
+		excerpt = ft_substr(buffer, 0, ft_strlen(buffer));
+
 	while(buffer[i] != '\0')
 	{
 		if(buffer[i] != '\n')
