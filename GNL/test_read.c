@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 11:28:28 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/10 16:28:54 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:20:55 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,19 @@ char *get_next_line(int fd)
 	fd = open("test_text.txt", O_RDONNLY);
 	if (fd == -1)
 	{
-		perror("Errorr reading file");
+		perror("Error reading file");
 		close(fd);
 		return (1);
 	}
 	read_bytes= read(fd, buffer, 50);
-	
+	int	i;
+	i = 0;
+	while(buffer[i] != '\0')
+	{
+		if(buffer[i] != '\n')
+			i++;
+		char	*excerpt;
+	}
 }
 /*char *line
 
