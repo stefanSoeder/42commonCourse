@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 11:28:28 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/11 09:32:24 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:44:38 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,6 @@
 
 char *get_excerpt(char *read_bytes)
 {
-/*	char	buffer[50];
-	ssize_t	read_bytes;
-
-	fd = open("test_text.txt", O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error reading file");
-		close(fd);
-		return (1);
-	}*/
-/*	read_bytes= read(fd, buffer, 50);*/
 	int	i;
 	i = 0;
 	char	*excerpt;
@@ -36,9 +25,39 @@ char *get_excerpt(char *read_bytes)
 			i++;
 		excerpt = ft_substr(read_bytes, 0, i);
 	}
-	/*	char	*rest;
-		rest = ft_substr(buffer, (i + 1), (ft_strlen(buffer - i)));*/
+	char	*rest;
+	rest = ft_substr(buffer, (i + 1), (ft_strlen(buffer - i)));
 	return(excerpt);
+}
+
+int main() {
+    int fd;
+    char buffer[50];
+    ssize_t bytes_leidos;
+
+    // Abrir un archivo en modo lectura
+    fd = open("test_text.txt", O_RDONLY);
+    if (fd == -1) {
+        perror("Error al abrir el archivo");
+        return 1;
+    }
+
+    // Leer 50 bytes del archivo
+    bytes_leidos = read(fd, buffer, 50);
+    if (bytes_leidos == -1) {
+        perror("Error al leer del archivo");
+        close(fd);
+        return 1;
+    }
+	buffer[bytes_leidos] = '\0';
+
+    // Imprimir los datos leídos
+    //write(1, buffer, bytes_leidos);
+	printf("This is your first excerpt:'\n'%s", get_excerpt(buffer));
+    // Cerrar el archivo
+    close(fd);
+
+    return 0;
 }
 
 /*int	main()
@@ -72,35 +91,6 @@ char *get_excerpt(char *read_bytes)
 
 
 
-int main() {
-    int fd;
-    char buffer[1000];
-    ssize_t bytes_leidos;
-
-    // Abrir un archivo en modo lectura
-    fd = open("test_text.txt", O_RDONLY);
-    if (fd == -1) {
-        perror("Error al abrir el archivo");
-        return 1;
-    }
-
-    // Leer 50 bytes del archivo
-    bytes_leidos = read(fd, buffer, 1000);
-    if (bytes_leidos == -1) {
-        perror("Error al leer del archivo");
-        close(fd);
-        return 1;
-    }
-	buffer[bytes_leidos] = '\0';
-
-    // Imprimir los datos leídos
-    //write(1, buffer, bytes_leidos);
-	printf("This is your first excerpt:'\n'%s", get_excerpt(buffer));
-    // Cerrar el archivo
-    close(fd);
-
-    return 0;
-}
 
 /*void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
