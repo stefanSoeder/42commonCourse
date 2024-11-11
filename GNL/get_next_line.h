@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:26:08 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/10 19:00:43 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/11 08:53:22 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	ft_strlen(char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(char *s, int c);
 char	*ft_substr(char *s, unsigned int start, size_t len);
-char	get_next_line(int  fd);
+char	*get_next_line(int  fd);
 char	*ft_free(char **str);
 
 #endif

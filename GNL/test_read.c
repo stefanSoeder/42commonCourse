@@ -6,44 +6,45 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 11:28:28 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/11 08:28:13 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:32:24 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char *get_excerpt(char *read_bytes)
 {
-	char	buffer[50];
+/*	char	buffer[50];
 	ssize_t	read_bytes;
 
-	fd = open("test_text.txt", O_RDONNLY);
+	fd = open("test_text.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		perror("Error reading file");
 		close(fd);
 		return (1);
-	}
-	read_bytes= read(fd, buffer, 50);
+	}*/
+/*	read_bytes= read(fd, buffer, 50);*/
 	int	i;
 	i = 0;
 	char	*excerpt;
-	if (ft_strchr(buffer, '\n') == 0)
-		excerpt = ft_substr(buffer, 0, read_bytes);
+	if (ft_strchr(read_bytes, '\n') == 0)
+		excerpt = ft_substr(read_bytes, 0, ft_strlen(read_bytes));
 	else
 	{
-		while (buffer[i] != '\n')
+		while (read_bytes[i] != '\n')
 			i++;
-		excerpt = ft_substr(buffer, 0, i);
-		char	*rest;
-		rest = ft_substr(buffer, (i + 1), (ft_strlen(buffer - i)));
+		excerpt = ft_substr(read_bytes, 0, i);
 	}
-
-	while(buffer[i] != '\n')
-			i++;
-		char	*excerpt;
-	}
+	/*	char	*rest;
+		rest = ft_substr(buffer, (i + 1), (ft_strlen(buffer - i)));*/
+	return(excerpt);
 }
+
+/*int	main()
+{
+	printf("Estas es la primera línea: %s", get_next_line("test_text.txt"));
+}*/
 /*char *line
 
 - Leo 50
@@ -73,7 +74,7 @@ char *get_next_line(int fd)
 
 int main() {
     int fd;
-    char buffer[100];
+    char buffer[1000];
     ssize_t bytes_leidos;
 
     // Abrir un archivo en modo lectura
@@ -84,23 +85,24 @@ int main() {
     }
 
     // Leer 50 bytes del archivo
-    bytes_leidos = read(fd, buffer, 50);
+    bytes_leidos = read(fd, buffer, 1000);
     if (bytes_leidos == -1) {
         perror("Error al leer del archivo");
         close(fd);
         return 1;
     }
+	buffer[bytes_leidos] = '\0';
 
     // Imprimir los datos leídos
-    write(1, buffer, bytes_leidos);
-
+    //write(1, buffer, bytes_leidos);
+	printf("This is your first excerpt:'\n'%s", get_excerpt(buffer));
     // Cerrar el archivo
     close(fd);
 
     return 0;
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+/*void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
@@ -113,4 +115,4 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		i++;
 	}
 	return (dest);
-}
+}*/
