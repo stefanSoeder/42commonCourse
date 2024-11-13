@@ -6,44 +6,30 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 11:28:28 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/11 13:10:29 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:47:07 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_excerpt(char *bytes_read)
+char *get_excerpt(char *read_bytes)
 {
 	int	i;
 	i = 0;
 	char	*excerpt;
-	if (ft_strchr(bytes_read, '\n') == 0)
-		excerpt = ft_substr(bytes_read, 0, ft_strlen(bytes_read));
+	if (ft_strchr(read_bytes, '\n') == 0)
+		excerpt = ft_substr(read_bytes, 0, ft_strlen(read_bytes));
 	else
 	{
-		while (bytes_read[i] != '\n')
+		while (read_bytes[i] != '\n')
 			i++;
-		excerpt = ft_substr(bytes_read, 0, i);
+		excerpt = ft_substr(read_bytes, 0, i);
 	}
 	char	*rest;
 	rest = ft_substr(buffer, (i + 1), (ft_strlen(buffer - i)));
 	return(excerpt);
 }
 
-char	*read_excerpt(int fd)
-{
-	char	*buf;
-	char	*bytes_read;
-	
-	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buff)
-		return (ft_free(&bytes_read));
-    fd = open("test_text.txt", O_RDONLY);
-	bytes_read = read(fd, buf, BUFFER_SIZE);
-
-	return (bytes_read);
-	close(fd);
-}
 int main() {
     int fd;
     char buffer[50];
