@@ -6,13 +6,13 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 11:28:28 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/13 11:47:07 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:18:32 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_excerpt(char *read_bytes)
+/*char *get_excerpt(char *read_bytes)
 {
 	int	i;
 	i = 0;
@@ -28,7 +28,7 @@ char *get_excerpt(char *read_bytes)
 	char	*rest;
 	rest = ft_substr(buffer, (i + 1), (ft_strlen(buffer - i)));
 	return(excerpt);
-}
+}*/
 
 int main() {
     int fd;
@@ -94,8 +94,6 @@ int main() {
 
 /*void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-
 	i = 0;
 	if (!dest || !src || (n == 0))
 		return (dest);
