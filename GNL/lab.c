@@ -6,55 +6,94 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:01:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/22 20:09:44 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:30:13 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 //function that reads BUFFER_SIZE bytes
-char	*read_excerpt(int fd)
+char	*read_excerpt(int fd, char *load)
 {
 	char	*buf;
 	ssize_t read_bytes;
 
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if(!buf)
-		return(ft_free(&(buf)));
+		return(ft_free(&(load)));
 	fd = open("test_text.txt", O_RDONLY);
 	if (fd == -1)
 		return (1);
-	read_bytes = read(fd, buf, ft_strlen(buf));
 	if (read_bytes == -1)
 	{
 		perror("Not able to read file");
 		close (fd);
 		return (1);
 	}
-	buf[read_bytes] = '\0';
-	return (buf);
+	while ((read_bytes > 0) && (!ft_strchr(buf,'\n')))
+	{
+		read_bytes = read(fd, buf, ft_strlen(buf));
+		if (read_bytes > 0)
+		{
+			buf[read_bytes] = '\0';
+			load = ft_strjoin(load, buf)
+		}
+	}
+	free(buf);
+	if (read_bytes == -1)
+		return (ft_free(&load));
+	return (load);
 }
 // Now we want to check if there's '\n' or not, and get what's before & after thati, if there's no \n we add everyhing to line. If there's a \n. we add everything up to \n to line and we return line.
 
-char	*excerpt_analyzer(char *read_excerpt)
+char	*excerpt_analyzer(char *buf, static char *line)
 {
-	static char		*line;
-	
-	if (ft_strchr(read_excerpt, '\n') == 1)
+	if (ft_strchr(buf, '\n') == 0)
+		line = ft_strjoin(line, buf);
+	else
+		{
+			char	*end_of_line;
+			int	i;
+
+			i = 0;
+			while(buf != '\n')
+				i++;
+			end_of_line = ft_substr(buf, 0, i);
+			line = ft_strjoin(line, end_of_line);
+			rest = ft_substr(buf, i, (ft_strlen(buf - i)));
+		}
 }
+
+char	excerpt_split(char *excerpt)
+{
+
+		{
+			char	*end_of_line;
+			int	i;
+
+			i = 0;
+			while(buf != '\n')
+				i++;
+			end_of_line = ft_substr(buf, 0, i);
+			line = ft_strjoin(line, end_of_line);
+			rest = ft_substr(buf, i, (ft_strlen(buf - i)));
+		}
+}
+
 
 char	get_nex_line(int fd)
 {
 	char	*excerpt;
-	static char	line;
+	static char	load;
 	
 	excerpt = read_excerpt(fd);
-	if(ft_strchr(excerpt, '\n') == 1)
-	while (ft_strchr(excerpt, '\n') == 0)
+
+	while (ft_strchr(excerpt, '\n') == 0) 
 	{
-		read_excerpt(fd);
+		excerpt = read_excerpt(fd);
 		int	i;
 
+	if (ft_strchr(excerpt, '\n') == 1)
 		while(excerpt[i] != '\n')
 			i++;
 	}
