@@ -6,13 +6,13 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:01:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/24 18:30:13 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:36:38 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-//function that reads BUFFER_SIZE bytes
+//function that reads BUFFER_SIZE bytes, and sets them in load until a '\n' is found
 char	*read_excerpt(int fd, char *load)
 {
 	char	*buf;
