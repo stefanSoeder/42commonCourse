@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:01:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/25 12:37:12 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:46:34 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char	*read_excerpt(int fd, char *load)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if(!buf)
 		return(ft_free(&(load)));
-	fd = open("test_text.txt", O_RDONLY);
-	if (fd == -1)
-		return (1);
+//	fd = open("test_text.txt", O_RDONLY);
+//	if (fd == -1)
+//		return (1);
 	if (read_bytes == -1)
 	{
 		perror("Not able to read file");
@@ -99,8 +99,7 @@ char	*get_nex_line(int fd)
 int main()
 {
    int fd;
-    char buffer[BUFFER_SIZE];
-    ssize_t bytes_leidos;
+   char	next_line;
 
     // Abrir el archivo
     fd = open("test_text.txt", O_RDONLY);
@@ -109,6 +108,9 @@ int main()
         perror("Error al abrir el archivo");
         return 1;
     }
+	next_line = get_next_line(fd);
+	printf("Esta es la siguiente línea:%s", next_line;);
+
 
 
 /*    // Leer el archivo por partes hasta el final
