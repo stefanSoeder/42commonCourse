@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:01:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/25 09:58:23 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:37:12 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,56 +49,39 @@ char	*read_excerpt(int fd, char *load)
 
 char	*before_break(char *load)
 {
-	if (ft_strchr(buf, '\n') == 0)
-		line = ft_strjoin(line, buf);
-	else
-		{
-			char	*end_of_line;
-			int	i;
+	char	*break_location;
+	char	*line;
 
-			i = 0;
-			while(buf != '\n')
-				i++;
-			end_of_line = ft_substr(buf, 0, i);
-			line = ft_strjoin(line, end_of_line);
-			rest = ft_substr(buf, i, (ft_strlen(buf - i)));
-		}
+	break_location = ft_strchr(load, '\n');
+	line = ft_substr(load, 0, (load - break_location));
+	if (!line);
+		return (NULL);
+	load = ft_substr(load, ((load - break_location) + 1), (load - break_location));
+	return (line);
 }
 
-char	excerpt_split(char *excerpt)
+// We do have an ctual line. Now we need to store whats after the break in load. 
+// In order to do so we'll first capture what's after the break, and then set it in load
+// as an actual preload,
+
+/*char	*after_break(char *load)
 {
-
-		{
-			char	*end_of_line;
-			int	i;
-
-			i = 0;
-			while(buf != '\n')
-				i++;
-			end_of_line = ft_substr(buf, 0, i);
-			line = ft_strjoin(line, end_of_line);
-			rest = ft_substr(buf, i, (ft_strlen(buf - i)));
-		}
-}
+		
+}*/
 
 
-char	get_nex_line(int fd)
+char	*get_nex_line(int fd)
 {
-	char	*excerpt;
-	static char	load;
-	
-	excerpt = read_excerpt(fd);
+	static char	*load;
+	char	*next_line;
 
-	while (ft_strchr(excerpt, '\n') == 0) 
-	{
-		excerpt = read_excerpt(fd);
-		int	i;
-
-	if (ft_strchr(excerpt, '\n') == 1)
-		while(excerpt[i] != '\n')
-			i++;
-	}
-
+	if (!fd)
+		return (NULL);
+	read_excerpt(fd, load);
+	next_line = before_break(load);
+	if (!next_line)
+		return (ft_free(&load));
+	return (next_line);
 }
 // So, the main will call the function that gets the next line.
 // That function has to read a file, and get line by line all its content.
@@ -113,19 +96,22 @@ char	get_nex_line(int fd)
 
 // I will free everything after buffer[bytes_read +1] in order to control memory flow:w
 
-int main() {
-    /*int fd;
+int main()
+{
+   int fd;
     char buffer[BUFFER_SIZE];
     ssize_t bytes_leidos;
 
     // Abrir el archivo
     fd = open("test_text.txt", O_RDONLY);
-    if (fd == -1) {
+    if (fd == -1)
+	{
         perror("Error al abrir el archivo");
         return 1;
     }
 
-    // Leer el archivo por partes hasta el final
+
+/*    // Leer el archivo por partes hasta el final
     while ((bytes_leidos = read(fd, buffer, sizeof(buffer))) > 0) {
         buffer[bytes_leidos] = '\0'; // Agregar el carácter nulo al final de los datos válidos
         printf("\n%s\n", buffer);
@@ -136,7 +122,7 @@ int main() {
     }
 
     close(fd);
-    return 0;/*
+    return 0;*/
 }
 
 
