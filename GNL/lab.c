@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:01:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/25 12:46:34 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:27:10 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,20 @@
 char	*read_excerpt(int fd, char *load)
 {
 	char	*buf;
-	ssize_t read_bytes;
+	int	 read_bytes;
 
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	read_bytes = 1;
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if(!buf)
 		return(ft_free(&(load)));
-//	fd = open("test_text.txt", O_RDONLY);
-//	if (fd == -1)
-//		return (1);
-	if (read_bytes == -1)
-	{
-		perror("Not able to read file");
-		close (fd);
-		return (1);
-	}
+	buf[0] = '\0';
 	while ((read_bytes > 0) && (!ft_strchr(buf,'\n')))
 	{
-		read_bytes = read(fd, buf, ft_strlen(buf));
+		read_bytes = read(fd, buf, BUFFER_SIZE);
 		if (read_bytes > 0)
 		{
 			buf[read_bytes] = '\0';
-			load = ft_strjoin(load, buf)
+			load = ft_strjoin(load, buf);
 		}
 	}
 	free(buf);
@@ -51,13 +44,19 @@ char	*before_break(char *load)
 {
 	char	*break_location;
 	char	*line;
+	char	*temp;
 
 	break_location = ft_strchr(load, '\n');
-	line = ft_substr(load, 0, (load - break_location));
-	if (!line);
+	line = ft_substr(load, 0, (break_location - load));
+	if (!line)
 		return (NULL);
-	load = ft_substr(load, ((load - break_location) + 1), (load - break_location));
-	return (line);
+	temp = ft_substr(load, (break_location - load), ft_strlen(break_location + 1));
+	if (load)
+	{
+		free(load);
+		load = temp;
+	}
+		return (line);
 }
 
 // We do have an ctual line. Now we need to store whats after the break in load. 
@@ -70,7 +69,7 @@ char	*before_break(char *load)
 }*/
 
 
-char	*get_nex_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*load;
 	char	*next_line;
@@ -99,7 +98,7 @@ char	*get_nex_line(int fd)
 int main()
 {
    int fd;
-   char	next_line;
+   char	*next_line;
 
     // Abrir el archivo
     fd = open("test_text.txt", O_RDONLY);
@@ -109,7 +108,7 @@ int main()
         return 1;
     }
 	next_line = get_next_line(fd);
-	printf("Esta es la siguiente línea:%s", next_line;);
+	printf("Esta es la siguiente línea:%s", next_line);
 
 
 
@@ -126,5 +125,3 @@ int main()
     close(fd);
     return 0;*/
 }
-
-
