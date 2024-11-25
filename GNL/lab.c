@@ -6,13 +6,14 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:01:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/24 19:36:38 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/25 09:58:23 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-//function that reads BUFFER_SIZE bytes, and sets them in load until a '\n' is found
+/*function that reads BUFFER_SIZE bytes, and sets them in load until a '\n' is found. 
+ So now load contains everyhting read, including the '\n' and everythingafter it*/
 char	*read_excerpt(int fd, char *load)
 {
 	char	*buf;
@@ -44,9 +45,9 @@ char	*read_excerpt(int fd, char *load)
 		return (ft_free(&load));
 	return (load);
 }
-// Now we want to check if there's '\n' or not, and get what's before & after thati, if there's no \n we add everyhing to line. If there's a \n. we add everything up to \n to line and we return line.
+// Now we have to set everything before the '\n' in a variable so we can get the line
 
-char	*excerpt_analyzer(char *buf, static char *line)
+char	*before_break(char *load)
 {
 	if (ft_strchr(buf, '\n') == 0)
 		line = ft_strjoin(line, buf);
