@@ -6,14 +6,14 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:01:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/25 16:27:10 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:32:41 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /*function that reads BUFFER_SIZE bytes, and sets them in load until a '\n' is found. 
- So now load contains everyhting read, including the '\n' and everythingafter it*/
+ So now load contains everyhting read, including the '\n' and everything after it*/
 char	*read_excerpt(int fd, char *load)
 {
 	char	*buf;
@@ -51,35 +51,27 @@ char	*before_break(char *load)
 	if (!line)
 		return (NULL);
 	temp = ft_substr(load, (break_location - load), ft_strlen(break_location + 1));
-	if (load)
-	{
-		free(load);
-		load = temp;
-	}
-		return (line);
+	return (line);
 }
 
 // We do have an ctual line. Now we need to store whats after the break in load. 
 // In order to do so we'll first capture what's after the break, and then set it in load
 // as an actual preload,
 
-/*char	*after_break(char *load)
-{
-		
-}*/
-
-
 char	*get_next_line(int fd)
 {
 	static char	*load;
 	char	*next_line;
 
-	if (!fd)
+	if (fd < 0)
 		return (NULL);
-	read_excerpt(fd, load);
+	if((load && ft_strchr(load, '\n')) || !load)
+		load = read_excerpt(fd, load);
+	if (!load)
+		return (NULL);
 	next_line = before_break(load);
 	if (!next_line)
-		return (ft_free(&load));
+		return (ft_free(&load), load = NULL);
 	return (next_line);
 }
 // So, the main will call the function that gets the next line.
@@ -95,7 +87,7 @@ char	*get_next_line(int fd)
 
 // I will free everything after buffer[bytes_read +1] in order to control memory flow:w
 
-int main()
+/*int main()
 {
    int fd;
    char	*next_line;
@@ -112,7 +104,7 @@ int main()
 
 
 
-/*    // Leer el archivo por partes hasta el final
+    // Leer el archivo por partes hasta el final
     while ((bytes_leidos = read(fd, buffer, sizeof(buffer))) > 0) {
         buffer[bytes_leidos] = '\0'; // Agregar el carácter nulo al final de los datos válidos
         printf("\n%s\n", buffer);
@@ -123,5 +115,51 @@ int main()
     }
 
     close(fd);
-    return 0;*/
+    return 0;
+}*/
+
+#include <fcntl.h> // Para open
+#include <stdio.h> // Para printf, perror
+#include <stdlib.h> // Para free
+
+char *get_next_line(int fd); // Prototipo de tu función
+
+int main(void)
+{
+    int fd;
+    char *line;
+    char *line1;
+    char *line2;
+    char *line3;
+
+    // Abrir el archivo en modo de solo lectura
+    fd = open("test_text.txt", O_RDONLY);
+    if (fd == -1)
+    {
+        perror("Error al abrir el archivo");
+        return 1;
+    }
+
+    // Llamar a get_next_line en un bucle
+//    while ((line = get_next_line(fd)) != NULL)
+  //  {
+  		line = get_next_line(fd);
+  		line1 = get_next_line(fd);
+  		line2 = get_next_line(fd);
+  		line3 = get_next_line(fd);
+        printf("%s", line); // Mostrar cada línea en pantalla
+        free(line);         // Liberar la memoria asignada por get_next_line
+        printf("%s", line1); // Mostrar cada línea en pantalla
+        free(line);         // Liberar la memoria asignada por get_next_line
+        printf("%s", line2); // Mostrar cada línea en pantalla
+        free(line);         // Liberar la memoria asignada por get_next_line
+        printf("%s", line3); // Mostrar cada línea en pantalla
+        free(line);         // Liberar la memoria asignada por get_next_line
+   // }
+
+    // Cerrar el archivo
+    close(fd);
+
+    return 0;
 }
+
