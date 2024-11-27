@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:01:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/27 13:32:41 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:49:06 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,21 @@ char	*before_break(char *load)
 {
 	char	*break_location;
 	char	*line;
-	char	*temp;
+	int	len;
+	char	*temp_load;
 
 	break_location = ft_strchr(load, '\n');
+	len = (break_location - load) + 1;
 	line = ft_substr(load, 0, (break_location - load));
 	if (!line)
 		return (NULL);
-	temp = ft_substr(load, (break_location - load), ft_strlen(break_location + 1));
+//	temp = ft_substr(load, (break_location - load), ft_strlen(break_location + 1));
+	temp_load = ft_substr(load,len, ft_strlen(load) - (len));
+	if (temp_load)
+	{
+		free(load);
+		load = temp_load;
+	}
 	return (line);
 }
 
@@ -140,26 +148,36 @@ int main(void)
         return 1;
     }
 
-    // Llamar a get_next_line en un bucle
-//    while ((line = get_next_line(fd)) != NULL)
-  //  {
-  		line = get_next_line(fd);
-  		line1 = get_next_line(fd);
-  		line2 = get_next_line(fd);
-  		line3 = get_next_line(fd);
-        printf("%s", line); // Mostrar cada línea en pantalla
-        free(line);         // Liberar la memoria asignada por get_next_line
-        printf("%s", line1); // Mostrar cada línea en pantalla
-        free(line);         // Liberar la memoria asignada por get_next_line
-        printf("%s", line2); // Mostrar cada línea en pantalla
-        free(line);         // Liberar la memoria asignada por get_next_line
-        printf("%s", line3); // Mostrar cada línea en pantalla
-        free(line);         // Liberar la memoria asignada por get_next_line
-   // }
+    // Leer las líneas una por una
+    line = get_next_line(fd);
+    line1 = get_next_line(fd);
+    line2 = get_next_line(fd);
+    line3 = get_next_line(fd);
+
+    // Mostrar las líneas en pantalla y liberar memoria
+    if (line)
+    {
+        printf("%s", line);
+        free(line);
+    }
+    if (line1)
+    {
+        printf("%s", line1);
+        free(line1);
+    }
+    if (line2)
+    {
+        printf("%s", line2);
+        free(line2);
+    }
+    if (line3)
+    {
+        printf("%s", line3);
+        free(line3);
+    }
 
     // Cerrar el archivo
     close(fd);
 
     return 0;
 }
-
