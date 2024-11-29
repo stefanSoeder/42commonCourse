@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lab.c                                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 17:01:39 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/29 12:30:52 by stemarti         ###   ########.fr       */
+/*   Created: 2024/11/29 12:45:36 by stemarti          #+#    #+#             */
+/*   Updated: 2024/11/29 12:55:12 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line.h"
 
@@ -32,7 +33,7 @@ char	*read_excerpt(int fd, char *load)
 			buf[read_bytes] = '\0';
 			load = ft_strjoin(load, buf);
 		}
-		printf("Buffer_Size bites read = %s\n", load);
+		//printf("Buffer_Size bites read = %s\n", load);
 	}
 	free(buf);
 	if (read_bytes == -1)
@@ -48,20 +49,22 @@ char	*before_break(char *load)
 	int	len;
 	char	*temp_load;
 
+	if (load[0] == '\0')
+		return (NULL);
 	break_location = ft_strchr(load, '\n');
 	len = (break_location - load) + 1;
 	line = ft_substr(load, 0, (break_location - load));
 	if (!line)
-		return (NULL);
-	printf("bytes_bejore_break = %s\n", load);
+		return (ft_free(&load));
+	//printf("bytes_bejore_break = %s\n", load);
 //	temp = ft_substr(load, (break_location - load), ft_strlen(break_location + 1));
 	temp_load = ft_substr(load,len, ft_strlen(load) - (len));
-	printf("temp_load = %s\n", temp_load);
+	//printf("temp_load = %s\n", temp_load);
 	if (temp_load)
 	{
 		ft_free(&load);
 		load = temp_load;
-		printf("bytes_after_break = %s\n", load);
+		//printf("bytes_after_break = %s\n", load);
 	}
 	return (line);
 }
@@ -82,11 +85,11 @@ char	*get_next_line(int fd)
 	if (!load)
 		return (NULL);
 	next_line = before_break(load);
-	printf("next_line = %s\n", next_line);
-	printf("str = %s\n", load);
-//	if (!next_line)
-//		return (ft_free(&load));
-	printf("str = %s\n", load);
+	//printf("next_line = %s\n", next_line);
+	//printf("str = %s\n", load);
+	if (!next_line)
+		return (NULL);
+	//printf("str = %s\n", load);
 	return (next_line);
 }
 // So, the main will call the function that gets the next line.
@@ -101,6 +104,7 @@ char	*get_next_line(int fd)
 		// to the current line. 
 
 // I will free everything after buffer[bytes_read +1] in order to control memory flow:w
+/*
 int main(void)
 {
     int fd;
@@ -129,7 +133,7 @@ int main(void)
         printf("%s", line);
         free(line);
 	}
- /*   }
+    }
     if (line1)
     {
         printf("%s", line1);
@@ -144,10 +148,11 @@ int main(void)
     {
         printf("%s", line3);
         free(line3);
-    }*/
+    }
 
     // Cerrar el archivo
     close(fd);
 
     return 0;
 }
+*/
