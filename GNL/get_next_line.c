@@ -6,7 +6,7 @@
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:35:53 by stemarti          #+#    #+#             */
-/*   Updated: 2024/12/10 16:01:47 by stemarti         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:06:46 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,4 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-char *get_next_line(int fd);
-
+char	*get_next_line(int fd);
