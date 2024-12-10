@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: stemarti <stemarti@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 17:21:51 by stemarti          #+#    #+#             */
-/*   Updated: 2024/11/25 15:01:20 by stemarti         ###   ########.fr       */
+/*   Created: 2024/12/10 15:42:50 by stemarti          #+#    #+#             */
+/*   Updated: 2024/12/10 15:47:44 by stemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[++c])
 		str[i + c] = s2[c];
 	str[i + c] = '\0';
-	//free(s1);
+	free(s1);
 	return (str);
 }
 
@@ -65,7 +65,7 @@ char	*ft_strchr(char *s, int c)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == (char) c)
+		if (s[i] == (char)c)
 			return (&((char *)s)[i]);
 		i++;
 	}
@@ -90,12 +90,12 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		res[0] = '\0';
 		return (res);
 	}
-	if ((ft_strlen(s) - start) < len)
+	if (ft_strlen(s) - start < len)
 		len = ft_strlen(s) - start;
 	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	while ((start < ft_strlen(s)) && (i < len) && (s[start]))
+	while (start < ft_strlen(s) && i < len && s[start])
 		res[i++] = s[start++];
 	res[i] = '\0';
 	return (res);
